@@ -31,6 +31,30 @@ package OpalRT_v2
         Modelica.Blocks.Interfaces.RealOutput GREF0 annotation(Placement(visible = true, transformation(origin = {-100, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 180), iconTransformation(origin = {-100, -80}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
         annotation(Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})), Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2}), graphics={  Text(origin = {-1.35568, 42.3522}, extent = {{-37.4, -19.63}, {28.0253, -65.3174}}, textString = "%name"), Text(origin = {-49.01, -23.57}, extent = {{-37.4, -19.63}, {0.62, -44.82}}, textString = "GREF"), Text(origin = {-48.76, -44.81}, extent = {{-37.4, -19.63}, {6.3, -48.03}}, textString = "GREF0"), Text(origin = {-47.7763, 110.006}, extent = {{-37.4, -19.63}, {16.92, -39.88}}, textString = "SPEED"), Rectangle(origin = {-0.123457, -0.123457}, extent = {{-100.123, 99.8765}, {100.123, -99.8765}}), Text(origin = {69.0124, -30.4842}, extent = {{-37.4, -19.63}, {16.92, -39.88}}, textString = "PMECH"), Text(origin = {69.2641, -51.7231}, extent = {{-37.4, -19.63}, {16.92, -39.88}}, textString = "PMECH0")}));
       end TurbineGovernor;
+
+      partial model PowerSystemStabilizer
+        Modelica.Blocks.Interfaces.RealVectorInput VSI annotation (Placement(
+              transformation(extent={{-120,-80},{-80,-40}}), iconTransformation(
+                extent={{-120,-80},{-80,-40}})));
+        Modelica.Blocks.Interfaces.RealOutput VOTHSG annotation (Placement(
+              transformation(extent={{92,-70},{112,-50}}), iconTransformation(
+                extent={{92,-70},{112,-50}})));
+        annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics
+              ={
+              Rectangle(extent={{-100,100},{100,-100}}, lineColor={28,108,200}),                                                                                                                                                                                                        Text(origin={
+                    6.64432,44.3522},                                                                                                                                                                                                        extent = {{-37.4, -19.63}, {28.0253, -65.3174}},
+                textString="%name",
+                lineColor={0,0,0}),                                                                                                                                                                                                        Text(origin={
+                    -57.0382,-40.1326},                                                                                                                                                                                                        extent={{
+                    -20.9618,-9.86736},{15.7078,-32.8326}},
+                lineColor={0,0,0},
+                textString="VSI"),                                                                                                                                                                                                        Text(origin={
+                    50.1144,-36.414},                                                                                                                                                                                                        extent={{
+                    -46.1144,-11.586},{34.5552,-38.5512}},
+                lineColor={0,0,0},
+                textString="VOTHSG")}),                                Diagram(
+              coordinateSystem(preserveAspectRatio=false)));
+      end PowerSystemStabilizer;
       annotation(Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})), Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})));
     end PartialModel;
 
