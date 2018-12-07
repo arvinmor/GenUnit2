@@ -19,7 +19,7 @@ package OpalRT_v2
         Modelica.Blocks.Interfaces.RealInput EFD0 annotation(Placement(visible = true, transformation(origin = {100, -20}, extent = {{10, -10}, {-10, 10}}, rotation = 0), iconTransformation(origin = {100, -80}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
         Modelica.Blocks.Interfaces.RealInput VREF annotation(Placement(visible = true, transformation(origin = {-100, 60}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {-100, -60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
         Modelica.Blocks.Interfaces.RealOutput VREF0 annotation(Placement(visible = true, transformation(origin = {-100, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 180), iconTransformation(origin = {-100, -80}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
-        Modelica.Blocks.Interfaces.RealInput VOTHSG annotation(Placement(visible = true, transformation(origin = {-80, 100}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {-100, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+        Modelica.Blocks.Interfaces.RealInput VOTHSG annotation(Placement(visible = true, transformation(origin={-100,6},     extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {-100, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
         annotation(Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})), Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2}), graphics={  Text(origin = {-1.35568, 42.3522}, extent = {{-37.4, -19.63}, {28.0253, -65.3174}}, textString = "%name"), Text(origin = {-49.01, -23.57}, extent = {{-37.4, -19.63}, {0.62, -44.82}}, textString = "VREF"), Text(origin = {-48.76, -44.81}, extent = {{-37.4, -19.63}, {6.3, -48.03}}, textString = "VREF0"), Text(origin = {-47.7763, 110.006}, extent = {{-37.4, -19.63}, {16.92, -39.88}}, textString = "ETERM"), Rectangle(origin = {-0.123457, -0.123457}, extent = {{-100.123, 99.8765}, {100.123, -99.8765}}), Text(origin = {78.642, -30.978}, extent = {{-37.4, -19.63}, {16.92, -39.88}}, textString = "EFD"), Text(origin = {75.19, -51.97}, extent = {{-37.4, -19.63}, {16.92, -39.88}}, textString = "EFD0"), Text(origin = {-49.0622, 50.7648}, extent = {{-37.4, -19.63}, {16.92, -39.88}}, textString = "VOTHSG")}));
       end Exciter;
 
@@ -79,6 +79,19 @@ package OpalRT_v2
 
         annotation(Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})), Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})));
       end EX2;
+
+      model noExciter
+        extends OpalRT_v2.Electrical.PartialModel.Exciter;
+        Modelica.Blocks.Sources.Constant const(k=0)
+          annotation (Placement(transformation(extent={{-42,30},{-62,50}})));
+      equation
+
+        connect(EFD0, EFD) annotation (Line(points={{100,-20},{80,-20},{80,0},{100,0}},
+              color={0,0,127}));
+        connect(const.y, VREF0)
+          annotation (Line(points={{-63,40},{-100,40}}, color={0,0,127}));
+        annotation(Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})), Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})));
+      end noExciter;
       annotation(Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})), Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})));
     end Exciter;
 
@@ -100,6 +113,19 @@ package OpalRT_v2
 
         annotation(Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})), Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})));
       end TG2;
+
+      model noTurbineGovernor
+        extends OpalRT_v2.Electrical.PartialModel.TurbineGovernor;
+        Modelica.Blocks.Sources.Constant const(k=0)
+          annotation (Placement(transformation(extent={{-38,30},{-58,50}})));
+      equation
+
+        connect(PMECH0, PMECH) annotation (Line(points={{100,-20},{80,-20},{80,
+                0},{100,0}}, color={0,0,127}));
+        connect(const.y, GREF0)
+          annotation (Line(points={{-59,40},{-100,40}}, color={0,0,127}));
+        annotation(Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})), Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})));
+      end noTurbineGovernor;
       annotation(Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})), Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})));
     end TurbineGovernor;
     annotation(Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})), Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})));
@@ -140,4 +166,5 @@ package OpalRT_v2
     end PIN2INOUT;
     annotation(Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})), Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})));
   end Connector;
+  annotation (uses(Modelica(version="3.2.2")));
 end OpalRT_v2;

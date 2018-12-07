@@ -1,10 +1,11 @@
 package GenUnit_v2
   class Gen_Ex_Tg
-    replaceable OpalRT_v2.Electrical.Exciter.EX1          exciter
+    replaceable OpalRT_v2.Electrical.Exciter.noExciter    exciter
       constrainedby OpalRT_v2.Electrical.PartialModel.Exciter     annotation(Placement(visible = true, transformation(origin = {-40, 30}, extent = {{-25, -25}, {25, 25}}, rotation = 0)));
     replaceable OpalRT_v2.Electrical.Generator.GEN1         generator
       constrainedby OpalRT_v2.Electrical.PartialModel.Generator       annotation(Placement(visible = true, transformation(origin = {40, 0}, extent = {{-25, -25}, {25, 25}}, rotation = 0)));
-    replaceable OpalRT_v2.Electrical.TurbineGovernor.TG1          turbinegovernor
+    replaceable OpalRT_v2.Electrical.TurbineGovernor.noTurbineGovernor
+                                                                  turbinegovernor
       constrainedby OpalRT_v2.Electrical.PartialModel.TurbineGovernor             annotation(Placement(visible = true, transformation(origin = {-40, -30}, extent = {{-25, -25}, {25, 25}}, rotation = 0)));
     input
     OpalRT_v2.Connector.InterfacePin TRIP annotation (Placement(
