@@ -1,5 +1,5 @@
 package GenUnit_v2
-  class Gen_Ex_Tg
+  class Gen_Ex_Pss_Tg
     replaceable OpalRT_v2.Electrical.Exciter.noExciter    exciter
       constrainedby OpalRT_v2.Electrical.PartialModel.Exciter     annotation(Placement(visible = true, transformation(origin = {-40, 30}, extent = {{-25, -25}, {25, 25}}, rotation = 0)));
     replaceable OpalRT_v2.Electrical.Generator.GEN1         generator
@@ -29,8 +29,6 @@ package GenUnit_v2
           origin={-113,-41})));
     Modelica.Blocks.Math.Add add1
       annotation (Placement(transformation(extent={{-92,-50},{-81,-39}})));
-    Modelica.Blocks.Sources.Constant const(k=0)
-      annotation (Placement(transformation(extent={{-123,38},{-103,58}})));
     OpalRT_v2.Connector.PIN2INOUT pIN2INOUT
       annotation (Placement(transformation(extent={{118,-23},{149,8}})));
     input OpalRT_v2.Connector.InterfacePin bus0_vr annotation (Placement(
@@ -53,17 +51,20 @@ package GenUnit_v2
           extent={{-4.5,-4.5},{4.5,4.5}},
           rotation=0,
           origin={160.5,-13.5})));
+    replaceable OpalRT_v2.Electrical.PowerSystemStabilizer.noPSS PSS
+      constrainedby OpalRT_v2.Electrical.PartialModel.PowerSystemStabilizer
+      annotation (Placement(transformation(extent={{-110,31},{-90,50}})));
   equation
     connect(turbinegovernor.SPEED, generator.ETERM) annotation(Line(points={{-65,-10},
-            {-75.0617,-10},{-75.0617,-67.6543},{78.2716,-67.6543},{78.2716,
-            0.740741},{65,0.740741},{65,0}},                                                                                                                                                                          color = {0, 0, 127}));
+            {-131,-10},{-131,-68.6543},{72.2716,-68.6543},{72.2716,-0.25926},{
+            65,-0.25926},{65,0}},                                                                                                                                                                                     color = {0, 0, 127}));
     connect(turbinegovernor.PMECH0, generator.PMECH0) annotation(Line(points={{-15,-50},
             {-1.48148,-50},{-1.48148,-19.7531},{15,-19.7531},{15,-20}},                                                                                                     color = {0, 0, 127}));
     connect(turbinegovernor.PMECH, generator.PMECH) annotation(Line(points={{-15,-45},
             {-3.95062,-45},{-3.95062,-15.0617},{15,-15.0617},{15,-15}},                                                                                                     color = {0, 0, 127}));
     connect(generator.SPEED, exciter.ETERM) annotation(Line(points={{65,15},{
-            78.5185,15},{78.5185,66.1728},{-72.0988,66.1728},{-72.0988,
-            49.3827},{-65,49.3827},{-65,50}},                                                                                                                                                         color = {0, 0, 127}));
+            72.5185,15},{72.5185,66},{-73,66},{-73,49.3827},{-65,49.3827},{-65,
+            50}},                                                                                                                                                                                     color = {0, 0, 127}));
     connect(exciter.EFD0, generator.EFD0) annotation(Line(points={{-15,10},{
             15.0617,10},{15.0617,10},{15,10}},                                                                                         color = {0, 0, 127}));
     connect(exciter.EFD, generator.EFD) annotation(Line(points={{-15,15},{
@@ -82,8 +83,6 @@ package GenUnit_v2
             -41.2},{-101.55,-41},{-113,-41}}, color={0,0,127}));
     connect(turbinegovernor.GREF0, add1.u2) annotation (Line(points={{-65,-50},
             {-78,-50},{-78,-52},{-93.1,-52},{-93.1,-47.8}}, color={0,0,127}));
-    connect(exciter.VOTHSG, const.y) annotation (Line(points={{-65,35},{-85,
-            35},{-85,48},{-102,48}}, color={0,0,127}));
     connect(generator.p, pIN2INOUT.p) annotation (Line(points={{65,-20},{70,-20},{
             70,-19.9},{118,-19.9}}, color={0,0,0}));
     connect(bus0_vr, pIN2INOUT.vr) annotation (Line(points={{89.5,3.5},{108,3.5},{
@@ -94,8 +93,12 @@ package GenUnit_v2
             -0.68},{153.155,-0.5},{160.5,-0.5}}, color={0,0,127}));
     connect(pIN2INOUT.ii, bus0_ii) annotation (Line(points={{149.31,-13.7},{153.155,
             -13.7},{153.155,-13.5},{160.5,-13.5}}, color={0,0,127}));
+    connect(PSS.VOTHSG, exciter.VOTHSG) annotation (Line(points={{-89.8,34.8},{
+            -78.36,34.8},{-78.36,35},{-65,35}}, color={0,0,127}));
+    connect(generator.VSI, PSS.VSI) annotation (Line(points={{40,-26},{40,-73},
+            {-135,-73},{-135,34.8},{-110,34.8}}, color={0,0,127}));
     annotation(Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {1, 1})), Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {1, 1})));
-  end Gen_Ex_Tg;
+  end Gen_Ex_Pss_Tg;
   annotation(Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})), Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})),
     uses(Modelica(version="3.2.2")));
 end GenUnit_v2;

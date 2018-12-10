@@ -46,7 +46,7 @@ package OpalRT_v2
       end TurbineGovernor;
 
       partial model PowerSystemStabilizer
-        Modelica.Blocks.Interfaces.RealInput PSSin annotation (Placement(
+        Modelica.Blocks.Interfaces.RealInput VSI annotation (Placement(
               transformation(extent={{-120,-80},{-80,-40}}), iconTransformation(
                 extent={{-120,-80},{-80,-40}})));
         Modelica.Blocks.Interfaces.RealOutput VOTHSG annotation (Placement(
@@ -180,6 +180,15 @@ package OpalRT_v2
       equation
         VOTHSG = 1;
       end PSS2;
+
+      model noPSS
+        extends PartialModel.PowerSystemStabilizer;
+        Modelica.Blocks.Sources.Constant const(k=0)
+          annotation (Placement(transformation(extent={{56,-70},{76,-50}})));
+      equation
+        connect(const.y, VOTHSG)
+          annotation (Line(points={{77,-60},{102,-60}}, color={0,0,127}));
+      end noPSS;
     end PowerSystemStabilizer;
     annotation(Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})), Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})));
   end Electrical;
