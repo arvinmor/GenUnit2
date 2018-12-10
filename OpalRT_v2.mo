@@ -171,10 +171,14 @@ package OpalRT_v2
 
       model PSS1
         extends PartialModel.PowerSystemStabilizer;
+      equation
+        VOTHSG = 1;
       end PSS1;
 
       model PSS2
         extends PartialModel.PowerSystemStabilizer;
+      equation
+        VOTHSG = 1;
       end PSS2;
     end PowerSystemStabilizer;
     annotation(Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})), Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})));
