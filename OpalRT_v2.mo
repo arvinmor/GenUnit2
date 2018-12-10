@@ -10,7 +10,20 @@ package OpalRT_v2
         Modelica.Blocks.Interfaces.RealOutput ETERM annotation(Placement(visible = true, transformation(origin = {100, 60}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {100, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
         Modelica.Blocks.Interfaces.RealInput EFD annotation(Placement(visible = true, transformation(origin = {-100, 60}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {-100, 60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
         Modelica.Blocks.Interfaces.RealInput TRIP annotation(Placement(visible = true, transformation(origin = {-20, 100}, extent = {{-10, -10}, {10, 10}}, rotation = -90), iconTransformation(origin = {0, 100}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
-        annotation(Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})), Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2}), graphics={  Text(origin = {-1.35568, 42.3522}, extent = {{-37.4, -19.63}, {28.0253, -65.3174}}, textString = "%name"), Text(origin = {-49.0116, 96.4274}, extent = {{-37.4, -19.63}, {0.62, -44.82}}, textString = "EFD"), Text(origin = {-48.7638, 75.1899}, extent = {{-37.4, -19.63}, {6.29901, -48.0299}}, textString = "EFD0"), Text(origin = {-50.9846, -28.2637}, extent = {{-37.4, -19.63}, {16.9163, -39.8817}}, textString = "PMECH"), Text(origin = {-49.7523, -49.0047}, extent = {{-37.4, -19.63}, {28.5249, -40.3738}}, textString = "PMECH0"), Text(origin = {68.52, 90.5}, extent = {{-37.4, -19.63}, {16.92, -39.88}}, textString = "ETERM"), Text(origin = {72.223, 29.7585}, extent = {{-37.4, -19.63}, {16.92, -39.88}}, textString = "SPEED"), Text(origin = {70, -49.7454}, extent = {{1.85926, -19.63}, {16.92, -39.88}}, textString = "P"), Rectangle(origin = {-0.123457, -0.123457}, extent = {{-100.123, 99.8765}, {100.123, -99.8765}}), Text(origin = {19.38, 112.41}, extent = {{-37.4, -19.63}, {0.62, -44.82}}, textString = "TRIP")}));
+        Modelica.Blocks.Interfaces.RealOutput VSI annotation (Placement(
+              transformation(
+              extent={{-10,-10},{10,10}},
+              rotation=270,
+              origin={0,-104}), iconTransformation(
+              extent={{-10,-10},{10,10}},
+              rotation=-90,
+              origin={0,-104})));
+        annotation(Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})), Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2}), graphics={  Text(origin = {-1.35568, 42.3522}, extent = {{-37.4, -19.63}, {28.0253, -65.3174}}, textString = "%name"), Text(origin = {-49.0116, 96.4274}, extent = {{-37.4, -19.63}, {0.62, -44.82}}, textString = "EFD"), Text(origin = {-48.7638, 75.1899}, extent = {{-37.4, -19.63}, {6.29901, -48.0299}}, textString = "EFD0"), Text(origin = {-50.9846, -28.2637}, extent = {{-37.4, -19.63}, {16.9163, -39.8817}}, textString = "PMECH"), Text(origin = {-49.7523, -49.0047}, extent = {{-37.4, -19.63}, {28.5249, -40.3738}}, textString = "PMECH0"), Text(origin = {68.52, 90.5}, extent = {{-37.4, -19.63}, {16.92, -39.88}}, textString = "ETERM"), Text(origin = {72.223, 29.7585}, extent = {{-37.4, -19.63}, {16.92, -39.88}}, textString = "SPEED"), Text(origin = {70, -49.7454}, extent = {{1.85926, -19.63}, {16.92, -39.88}}, textString = "P"), Rectangle(origin = {-0.123457, -0.123457}, extent = {{-100.123, 99.8765}, {100.123, -99.8765}}), Text(origin = {19.38, 112.41}, extent = {{-37.4, -19.63}, {0.62, -44.82}}, textString = "TRIP"),
+                                                                                                                                                                                                        Text(origin={
+                    7.16006,-54.4046},                                                                                                                                                                                                        extent={{
+                    -19.5447,-19.4891},{8.83994,-39.5954}},
+                textString="VSI",
+                lineColor={0,0,0})}));
       end Generator;
 
       partial model Exciter
@@ -33,14 +46,13 @@ package OpalRT_v2
       end TurbineGovernor;
 
       partial model PowerSystemStabilizer
-        Modelica.Blocks.Interfaces.RealVectorInput VSI annotation (Placement(
+        Modelica.Blocks.Interfaces.RealInput PSSin annotation (Placement(
               transformation(extent={{-120,-80},{-80,-40}}), iconTransformation(
                 extent={{-120,-80},{-80,-40}})));
         Modelica.Blocks.Interfaces.RealOutput VOTHSG annotation (Placement(
               transformation(extent={{92,-70},{112,-50}}), iconTransformation(
                 extent={{92,-70},{112,-50}})));
-        annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics
-              ={
+        annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
               Rectangle(extent={{-100,100},{100,-100}}, lineColor={28,108,200}),                                                                                                                                                                                                        Text(origin={
                     6.64432,44.3522},                                                                                                                                                                                                        extent = {{-37.4, -19.63}, {28.0253, -65.3174}},
                 textString="%name",
@@ -67,6 +79,7 @@ package OpalRT_v2
         ETERM = 1;
         SPEED = 0;
         EFD0 = 1;
+        VSI = 0;
         PMECH0=1;
         p.ir = 1;
         p.ii = 0;
@@ -77,6 +90,7 @@ package OpalRT_v2
       equation
         ETERM = 1;
         SPEED = 0;
+        VSI = 0;
         EFD0 = 1;
         PMECH0=1;
         p.ir = 0;
@@ -152,6 +166,17 @@ package OpalRT_v2
       end noTurbineGovernor;
       annotation(Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})), Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})));
     end TurbineGovernor;
+
+    package PowerSystemStabilizer
+
+      model PSS1
+        extends PartialModel.PowerSystemStabilizer;
+      end PSS1;
+
+      model PSS2
+        extends PartialModel.PowerSystemStabilizer;
+      end PSS2;
+    end PowerSystemStabilizer;
     annotation(Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})), Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})));
   end Electrical;
 
