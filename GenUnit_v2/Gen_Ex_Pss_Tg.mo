@@ -1,59 +1,74 @@
 within GenUnit_v2;
 class Gen_Ex_Pss_Tg
-  replaceable OpalRT_v2.Electrical.Exciter.noExciter    exciter
+  replaceable OpalRT_v2.Electrical.Exciter.noExciter    exciter if gen_en and
+    ex_en
     constrainedby OpalRT_v2.Electrical.PartialModel.Exciter     annotation(Placement(visible = true, transformation(origin = {-40, 30}, extent = {{-25, -25}, {25, 25}}, rotation = 0)));
-  replaceable OpalRT_v2.Electrical.Generator.GEN1         generator
+  replaceable OpalRT_v2.Electrical.Generator.GEN1         generator if gen_en
     constrainedby OpalRT_v2.Electrical.PartialModel.Generator       annotation(Placement(visible = true, transformation(origin = {40, 0}, extent = {{-25, -25}, {25, 25}}, rotation = 0)));
   replaceable OpalRT_v2.Electrical.TurbineGovernor.noTurbineGovernor
-                                                                turbinegovernor
+                                                                turbinegovernor if
+    gen_en and tg_en
     constrainedby OpalRT_v2.Electrical.PartialModel.TurbineGovernor             annotation(Placement(visible = true, transformation(origin = {-40, -30}, extent = {{-25, -25}, {25, 25}}, rotation = 0)));
   input
-  OpalRT_v2.Connector.InterfacePin TRIP annotation (Placement(
+  OpalRT_v2.Connector.InterfacePin TRIP if gen_en
+                                        annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=-90,
         origin={40,46})));
   input
-  OpalRT_v2.Connector.InterfacePin dVREF annotation (Placement(
+  OpalRT_v2.Connector.InterfacePin dVREF if gen_en and ex_en
+                                         annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-113,16})));
-  Modelica.Blocks.Math.Add add
+  Modelica.Blocks.Math.Add add if gen_en and ex_en
     annotation (Placement(transformation(extent={{-91,10},{-80,21}})));
   input
-  OpalRT_v2.Connector.InterfacePin dGREF annotation (Placement(
+  OpalRT_v2.Connector.InterfacePin dGREF if gen_en and tg_en
+                                         annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-113,-41})));
-  Modelica.Blocks.Math.Add add1
+  Modelica.Blocks.Math.Add add1 if gen_en and tg_en
     annotation (Placement(transformation(extent={{-92,-50},{-81,-39}})));
-  OpalRT_v2.Connector.PIN2INOUT pIN2INOUT
+  OpalRT_v2.Connector.PIN2INOUT pIN2INOUT if gen_en
     annotation (Placement(transformation(extent={{118,-23},{149,8}})));
-  input OpalRT_v2.Connector.InterfacePin bus0_vr annotation (Placement(
+  input OpalRT_v2.Connector.InterfacePin bus0_vr if gen_en
+                                                 annotation (Placement(
         transformation(
         extent={{-4.5,-4.5},{4.5,4.5}},
         rotation=0,
         origin={89.5,3.5})));
-  input OpalRT_v2.Connector.InterfacePin bus0_vi annotation (Placement(
+  input OpalRT_v2.Connector.InterfacePin bus0_vi if gen_en
+                                                 annotation (Placement(
         transformation(
         extent={{-4.5,-4.5},{4.5,4.5}},
         rotation=0,
         origin={89.5,-10.5})));
-  output OpalRT_v2.Connector.InterfacePin bus0_ir annotation (Placement(
+  output OpalRT_v2.Connector.InterfacePin bus0_ir if gen_en
+                                                  annotation (Placement(
         transformation(
         extent={{-4.5,-4.5},{4.5,4.5}},
         rotation=0,
         origin={160.5,-0.5})));
-  output OpalRT_v2.Connector.InterfacePin bus0_ii annotation (Placement(
+  output OpalRT_v2.Connector.InterfacePin bus0_ii if gen_en
+                                                  annotation (Placement(
         transformation(
         extent={{-4.5,-4.5},{4.5,4.5}},
         rotation=0,
         origin={160.5,-13.5})));
-  replaceable OpalRT_v2.Electrical.PowerSystemStabilizer.noPSS PSS
+  replaceable OpalRT_v2.Electrical.PowerSystemStabilizer.noPSS PSS if gen_en
+     and ex_en and pss_en
     constrainedby OpalRT_v2.Electrical.PartialModel.PowerSystemStabilizer
     annotation (Placement(transformation(extent={{-110,31},{-90,50}})));
+    parameter Boolean gen_en = true;
+    parameter Boolean ex_en = true;
+    parameter Boolean tg_en = true;
+    parameter Boolean pss_en = true;
+
 equation
   connect(turbinegovernor.SPEED, generator.ETERM) annotation(Line(points={{-65,-10},
           {-131,-10},{-131,-68.6543},{72.2716,-68.6543},{72.2716,-0.25926},{65,
