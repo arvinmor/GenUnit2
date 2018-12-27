@@ -1,7 +1,7 @@
 within OpalRT_v2.Electrical.PartialModel;
 partial model Exciter
   Modelica.Blocks.Interfaces.RealOutput EFD annotation(Placement(visible = true, transformation(origin = {100, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {100, -60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Interfaces.RealInput ETERM annotation(Placement(visible = true, transformation(origin = {-100, -40}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {-100, 80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  Modelica.Blocks.Interfaces.RealInput ETERM annotation(Placement(visible = true, transformation(origin={-100,-28},    extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {-100, 80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Interfaces.RealInput EFD0 annotation(Placement(visible = true, transformation(origin = {100, -20}, extent = {{10, -10}, {-10, 10}}, rotation = 0), iconTransformation(origin = {100, -80}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
   Modelica.Blocks.Interfaces.RealInput VREF annotation(Placement(visible = true, transformation(origin = {-100, 60}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {-100, -60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Interfaces.RealOutput VREF0 annotation(Placement(visible = true, transformation(origin = {-100, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 180), iconTransformation(origin = {-100, -80}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
@@ -9,7 +9,7 @@ partial model Exciter
   Modelica.Blocks.Interfaces.RealInput IFD annotation (Placement(
       visible=true,
       transformation(
-        origin={-100,-40},
+        origin={-100,-52},
         extent={{-10,-10},{10,10}},
         rotation=0),
       iconTransformation(
@@ -19,7 +19,7 @@ partial model Exciter
   Modelica.Blocks.Interfaces.RealInput ETERM0 annotation (Placement(
       visible=true,
       transformation(
-        origin={-100,-40},
+        origin={-100,-78},
         extent={{-10,-10},{10,10}},
         rotation=0),
       iconTransformation(

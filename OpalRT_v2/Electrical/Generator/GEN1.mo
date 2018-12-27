@@ -5,9 +5,11 @@ model GEN1
   extends OpalRT_v2.Electrical.PartialModel.Generator;
 equation
   ETERM = 1;
+  ETERM0 = 1;
+  IFD = 1;
   SPEED = 0;
   EFD0 = 1;
-  VSI = 0;
+  VSI = zeros(6);
   PMECH0=1;
   p.ir = 1;
   p.ii = 0;

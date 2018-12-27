@@ -7,11 +7,11 @@ partial model Generator
   Connector.PwPin                      p annotation(Placement(visible = true, transformation(origin={100,-80},    extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin={100,-80},    extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Interfaces.RealOutput SPEED annotation(Placement(visible = true, transformation(origin={100,-26},  extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin={100,80},    extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Interfaces.RealOutput PMECH0 annotation(Placement(visible = true, transformation(origin = {-100, -80}, extent = {{-10, -10}, {10, 10}}, rotation = 180), iconTransformation(origin={-100,-56},    extent = {{10, -10}, {-10, 10}}, rotation = 0)));
-  Modelica.Blocks.Interfaces.RealOutput EFD0 annotation(Placement(visible = true, transformation(origin={-100,48},    extent = {{-10, -10}, {10, 10}}, rotation = 180), iconTransformation(origin={-100,28},    extent = {{10, -10}, {-10, 10}}, rotation = 0)));
+  Modelica.Blocks.Interfaces.RealOutput EFD0 annotation(Placement(visible = true, transformation(origin={-100,28},    extent = {{-10, -10}, {10, 10}}, rotation = 180), iconTransformation(origin={-100,8},     extent = {{10, -10}, {-10, 10}}, rotation = 0)));
   Modelica.Blocks.Interfaces.RealOutput ETERM annotation(Placement(visible = true, transformation(origin={100,80},    extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin={100,-28},  extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Interfaces.RealInput EFD annotation(Placement(visible = true, transformation(origin={-100,48},    extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin={-100,48},    extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Interfaces.RealInput TRIP annotation(Placement(visible = true, transformation(origin = {-20, 100}, extent = {{-10, -10}, {10, 10}}, rotation = -90), iconTransformation(origin = {0, 100}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
-  Modelica.Blocks.Interfaces.RealOutput VSI annotation (Placement(
+  Modelica.Blocks.Interfaces.RealOutput VSI[6] annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
@@ -20,7 +20,7 @@ partial model Generator
         rotation=-90,
         origin={0,-104})));
   Connector.signalPassThrough intEFDconnect if not (ex_en)
-    annotation (Placement(transformation(extent={{-80,54},{-68,66}})));
+    annotation (Placement(transformation(extent={{-80,42},{-68,54}})));
   Connector.signalPassThrough intPMECHconnect if not (tg_en)
     annotation (Placement(transformation(extent={{-82,-66},{-70,-54}})));
   Modelica.Blocks.Interfaces.RealOutput IFD annotation (Placement(
@@ -36,17 +36,16 @@ partial model Generator
   Modelica.Blocks.Interfaces.RealOutput ETERM0 annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
-        rotation=270,
-        origin={-50,96}), iconTransformation(
+        rotation=180,
+        origin={-100,78}), iconTransformation(
         extent={{10,-10},{-10,10}},
         rotation=0,
         origin={-102,82})));
 equation
   connect(EFD, intEFDconnect.u)
-    annotation (Line(points={{-100,48},{-90,48},{-90,60},{-80.24,60}},
-                                                     color={0,0,127}));
-  connect(intEFDconnect.y, EFD0) annotation (Line(points={{-67.64,60},{-66,60},
-          {-66,48},{-100,48}},color={0,0,127}));
+    annotation (Line(points={{-100,48},{-80.24,48}}, color={0,0,127}));
+  connect(intEFDconnect.y, EFD0) annotation (Line(points={{-67.64,48},{-66,48},{
+          -66,28},{-100,28}}, color={0,0,127}));
   connect(PMECH, intPMECHconnect.u)
     annotation (Line(points={{-100,-60},{-82.24,-60}}, color={0,0,127}));
   connect(intPMECHconnect.y, PMECH0) annotation (Line(points={{-69.64,-60},{-66,

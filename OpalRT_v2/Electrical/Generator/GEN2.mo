@@ -4,7 +4,9 @@ model GEN2
 equation
   ETERM = 1;
   SPEED = 0;
-  VSI = 0;
+  VSI = zeros(6);
+  ETERM0 = 1;
+  IFD = 1;
   EFD0 = 1;
   PMECH0=1;
   p.ir = 0;

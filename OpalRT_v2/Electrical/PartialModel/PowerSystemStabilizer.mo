@@ -1,6 +1,6 @@
 within OpalRT_v2.Electrical.PartialModel;
 partial model PowerSystemStabilizer
-  Modelica.Blocks.Interfaces.RealInput VSI annotation (Placement(transformation(
+  Modelica.Blocks.Interfaces.RealVectorInput VSI[6] annotation (Placement(transformation(
           extent={{-120,-80},{-80,-40}}), iconTransformation(extent={{-120,-80},
             {-80,-40}})));
   Modelica.Blocks.Interfaces.RealOutput VOTHSG annotation (Placement(
