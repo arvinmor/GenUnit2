@@ -10,54 +10,52 @@ class Gen_Ex_Pss_Tg
                                                                 turbinegovernor if
     gen_en and tg_en
     constrainedby OpalRT_v2.Electrical.PartialModel.TurbineGovernor             annotation(Placement(visible = true, transformation(origin = {-40, -30}, extent = {{-25, -25}, {25, 25}}, rotation = 0)));
-  input
-  OpalRT_v2.Connector.InterfacePin TRIP if gen_en
-                                        annotation (Placement(
+  input OpalRT_v2.NonElectrical.Connector.InterfacePin TRIP if
+                                           gen_en annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=-90,
         origin={40,46})));
-  input
-  OpalRT_v2.Connector.InterfacePin dVREF if gen_en and ex_en
-                                         annotation (Placement(
-        transformation(
+  input OpalRT_v2.NonElectrical.Connector.InterfacePin dVREF if
+                                            gen_en and ex_en annotation (
+      Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-113,16})));
   Modelica.Blocks.Math.Add add if gen_en and ex_en
     annotation (Placement(transformation(extent={{-91,10},{-80,21}})));
-  input
-  OpalRT_v2.Connector.InterfacePin dGREF if gen_en and tg_en
-                                         annotation (Placement(
-        transformation(
+  input OpalRT_v2.NonElectrical.Connector.InterfacePin dGREF if
+                                            gen_en and tg_en annotation (
+      Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-113,-41})));
   Modelica.Blocks.Math.Add add1 if gen_en and tg_en
     annotation (Placement(transformation(extent={{-92,-50},{-81,-39}})));
-  OpalRT_v2.Connector.PIN2INOUT pIN2INOUT if gen_en
+  OpalRT_v2.NonElectrical.Connector.PIN2INOUT pIN2INOUT if
+                                             gen_en
     annotation (Placement(transformation(extent={{118,-23},{149,8}})));
-  input OpalRT_v2.Connector.InterfacePin bus0_vr if gen_en
-                                                 annotation (Placement(
-        transformation(
+  input OpalRT_v2.NonElectrical.Connector.InterfacePin bus0_vr if
+                                                    gen_en annotation (
+      Placement(transformation(
         extent={{-4.5,-4.5},{4.5,4.5}},
         rotation=0,
         origin={89.5,3.5})));
-  input OpalRT_v2.Connector.InterfacePin bus0_vi if gen_en
-                                                 annotation (Placement(
-        transformation(
+  input OpalRT_v2.NonElectrical.Connector.InterfacePin bus0_vi if
+                                                    gen_en annotation (
+      Placement(transformation(
         extent={{-4.5,-4.5},{4.5,4.5}},
         rotation=0,
         origin={89.5,-10.5})));
-  output OpalRT_v2.Connector.InterfacePin bus0_ir if gen_en
-                                                  annotation (Placement(
-        transformation(
+  output OpalRT_v2.NonElectrical.Connector.InterfacePin bus0_ir if
+                                                     gen_en annotation (
+      Placement(transformation(
         extent={{-4.5,-4.5},{4.5,4.5}},
         rotation=0,
         origin={160.5,-0.5})));
-  output OpalRT_v2.Connector.InterfacePin bus0_ii if gen_en
-                                                  annotation (Placement(
-        transformation(
+  output OpalRT_v2.NonElectrical.Connector.InterfacePin bus0_ii if
+                                                     gen_en annotation (
+      Placement(transformation(
         extent={{-4.5,-4.5},{4.5,4.5}},
         rotation=0,
         origin={160.5,-13.5})));

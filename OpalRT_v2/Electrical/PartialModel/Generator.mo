@@ -4,7 +4,16 @@ partial model Generator
   parameter Boolean tg_en = false;
   Modelica.Blocks.Interfaces.RealInput PMECH annotation(Placement(visible = true, transformation(origin = {-100, -60}, extent = {{-10, -10}, {10, 10}}, rotation = 0),
       iconTransformation(extent={{-110,-44},{-90,-24}})));
-  Connector.PwPin                      p annotation(Placement(visible = true, transformation(origin={100,-80},    extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin={100,-80},    extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  NonElectrical.Connector.PwPin p annotation (Placement(
+      visible=true,
+      transformation(
+        origin={100,-80},
+        extent={{-10,-10},{10,10}},
+        rotation=0),
+      iconTransformation(
+        origin={100,-80},
+        extent={{-10,-10},{10,10}},
+        rotation=0)));
   Modelica.Blocks.Interfaces.RealOutput SLIP annotation (Placement(
       visible=true,
       transformation(
@@ -28,9 +37,11 @@ partial model Generator
         extent={{-10,-10},{10,10}},
         rotation=-90,
         origin={0,-104})));
-  Connector.signalPassThrough intEFDconnect if not (ex_en)
+  NonElectrical.Connector.signalPassThrough intEFDconnect if
+                                               not (ex_en)
     annotation (Placement(transformation(extent={{-80,42},{-68,54}})));
-  Connector.signalPassThrough intPMECHconnect if not (tg_en)
+  NonElectrical.Connector.signalPassThrough intPMECHconnect if
+                                                 not (tg_en)
     annotation (Placement(transformation(extent={{-82,-66},{-70,-54}})));
   Modelica.Blocks.Interfaces.RealOutput IFD annotation (Placement(
       visible=true,
