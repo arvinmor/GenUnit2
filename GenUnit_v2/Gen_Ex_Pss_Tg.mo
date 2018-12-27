@@ -3,7 +3,8 @@ class Gen_Ex_Pss_Tg
   replaceable OpalRT_v2.Electrical.Exciter.noExciter    exciter if gen_en and
     ex_en
     constrainedby OpalRT_v2.Electrical.PartialModel.Exciter     annotation(Placement(visible = true, transformation(origin = {-40, 30}, extent = {{-25, -25}, {25, 25}}, rotation = 0)));
-  replaceable OpalRT_v2.Electrical.Generator.GEN1         generator if gen_en
+  replaceable OpalRT_v2.Electrical.Generator.GEN1         generator(ex_en=ex_en,
+      tg_en=tg_en) if                                                  gen_en
     constrainedby OpalRT_v2.Electrical.PartialModel.Generator       annotation(Placement(visible = true, transformation(origin = {40, 0}, extent = {{-25, -25}, {25, 25}}, rotation = 0)));
   replaceable OpalRT_v2.Electrical.TurbineGovernor.noTurbineGovernor
                                                                 turbinegovernor if
