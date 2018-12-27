@@ -3,7 +3,7 @@ model GEN2
   extends OpalRT_v2.Electrical.PartialModel.Generator;
 equation
   ETERM = 1;
-  SPEED = 0;
+  SLIP = 0;
   VSI = zeros(6);
   ETERM0 = 1;
   IFD = 1;

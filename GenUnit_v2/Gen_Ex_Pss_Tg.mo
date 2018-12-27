@@ -3,7 +3,7 @@ class Gen_Ex_Pss_Tg
   replaceable OpalRT_v2.Electrical.Exciter.noExciter    exciter if gen_en and
     ex_en
     constrainedby OpalRT_v2.Electrical.PartialModel.Exciter     annotation(Placement(visible = true, transformation(origin = {-40, 30}, extent = {{-25, -25}, {25, 25}}, rotation = 0)));
-  replaceable OpalRT_v2.Electrical.Generator.GEN1         generator(ex_en=ex_en,
+  replaceable OpalRT_v2.Electrical.Generator.GENSAL       generator(ex_en=ex_en,
       tg_en=tg_en) if                                                  gen_en
     constrainedby OpalRT_v2.Electrical.PartialModel.Generator       annotation(Placement(visible = true, transformation(origin = {40, 0}, extent = {{-25, -25}, {25, 25}}, rotation = 0)));
   replaceable OpalRT_v2.Electrical.TurbineGovernor.noTurbineGovernor
@@ -74,11 +74,12 @@ equation
   connect(turbinegovernor.SPEED, generator.ETERM) annotation(Line(points={{-65,-10},
           {-131,-10},{-131,-68.6543},{72.2716,-68.6543},{72.2716,-7},{65,-7}},                                                                                                                                      color = {0, 0, 127}));
   connect(turbinegovernor.PMECH0, generator.PMECH0) annotation(Line(points={{-15,-50},
-          {-1.48148,-50},{-1.48148,-19.7531},{15,-19.7531},{15,-14}},                                                                                                     color = {0, 0, 127}));
+          {-1.48148,-50},{-1.48148,-13.7531},{15,-13.7531},{15,-14}},                                                                                                     color = {0, 0, 127}));
   connect(turbinegovernor.PMECH, generator.PMECH) annotation(Line(points={{-15,-45},
-          {-3.95062,-45},{-3.95062,-15.0617},{15,-15.0617},{15,-8.5}},                                                                                                    color = {0, 0, 127}));
-  connect(generator.SPEED, exciter.ETERM) annotation(Line(points={{65,20},{
-          72.5185,20},{72.5185,66},{-73,66},{-73,49.3827},{-65,49.3827},{-65,50}},                                                                                                                  color = {0, 0, 127}));
+          {-5.95062,-45},{-5.95062,-8.0617},{15,-8.0617},{15,-8.5}},                                                                                                      color = {0, 0, 127}));
+  connect(generator.SLIP, exciter.ETERM) annotation (Line(points={{65,20},{72.5185,
+          20},{72.5185,66},{-73,66},{-73,49.3827},{-65,49.3827},{-65,50}},
+        color={0,0,127}));
   connect(generator.TRIP, TRIP)
     annotation (Line(points={{40,25},{40,46}}, color={0,0,127}));
   connect(add.y, exciter.VREF) annotation (Line(points={{-79.45,15.5},{-65,
@@ -105,15 +106,15 @@ equation
           -13.7},{153.155,-13.5},{160.5,-13.5}}, color={0,0,127}));
   connect(PSS.VOTHSG, exciter.VOTHSG) annotation (Line(points={{-89.8,34.8},{
           -78.36,34.8},{-78.36,35},{-65,35}}, color={0,0,127}));
-  connect(generator.VSI, PSS.VSI) annotation (Line(points={{40,-26},{40,-73},{
-          -135,-73},{-135,34.8},{-110,34.8}}, color={0,0,127}));
   connect(exciter.EFD, generator.EFD)
     annotation (Line(points={{-15,15},{15,15},{15,12}}, color={0,0,127}));
-  connect(exciter.EFD0, generator.EFD0) annotation (Line(points={{-15,10},{-5,
-          10},{-5,8},{15,8},{15,7}}, color={0,0,127}));
+  connect(exciter.EFD0, generator.EFD0) annotation (Line(points={{-15,10},{-5,10},
+          {-5,5},{14.5,5}},          color={0,0,127}));
   connect(generator.ETERM0, exciter.ETERM0) annotation (Line(points={{14.5,20.5},
           {0,20.5},{0,45},{-16,45}}, color={0,0,127}));
-  connect(generator.IFD, exciter.IFD) annotation (Line(points={{65,8},{80,8},{
-          80,70},{-77,70},{-77,42.5},{-65,42.5}}, color={0,0,127}));
+  connect(generator.IFD, exciter.IFD) annotation (Line(points={{65,8},{80,8},{80,
+          70},{-77,70},{-77,42.5},{-65,42.5}}, color={0,0,127}));
+  connect(generator.VSI, PSS.VSI) annotation (Line(points={{40,-26},{40,-77},{-135,
+          -77},{-135,34.8},{-110,34.8}}, color={0,0,127}));
   annotation(Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {1, 1})), Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {1, 1})));
 end Gen_Ex_Pss_Tg;
